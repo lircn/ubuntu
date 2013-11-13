@@ -1,0 +1,28 @@
+#!/system/bin/sh
+#
+# Copyright (C) 2013, TP-LINK TECHNOLOGIES CO., LTD.
+# Author: Li Zheng <lizheng_w5625@tp-link.com.cn>
+
+case $1 in
+	netm)
+		cd /home/lizheng/work/tr781/device/tp-link/net/netm
+		;;
+	wlan)
+		cd /home/lizheng/work/tr781/device/tp-link/wlan/wlan_utilities
+		;;
+	inc)
+		cd /home/lizheng/work/tr781/system/core/include/private
+		;;
+	out)
+		cd /home/lizheng/work/tr781/out/debug/target/product/tr781/system/bin
+		;;
+
+
+	*)
+		echo "Usage:"
+		echo "netm /home/lizheng/work/tr781/device/tp-link/net/netm"
+		echo "wlan /home/lizheng/work/tr781/device/tp-link/wlan/wlan_utilities"
+		echo "inc  /home/lizheng/work/tr781/system/core/include/private"
+		echo "out  /home/lizheng/work/tr781/out/debug/target/product/tr781/system/bin"
+		;;
+esac
