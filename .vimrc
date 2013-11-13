@@ -1,40 +1,183 @@
-if (has("win32") || has("win95") || has("win64") || has("win16"))
-	let g:iswindows=1
-else
-	let g:iswindows=0
+if (has("win32") || has("win95") || has("win64") || has("win16") || has("win32unix"))
+    let g:OS#name = "win"
+    let g:OS#win = 1
+    let g:OS#mac = 0
+    let g:OS#unix = 0
+elseif has("mac")
+    let g:OS#name = "mac"
+    let g:OS#mac = 1
+    let g:OS#win = 0
+    let g:OS#unix = 0
+elseif has("unix")
+    let g:OS#name = "unix"
+    let g:OS#unix = 1
+    let g:OS#win = 0
+    let g:OS#mac = 0
 endif
+if has("gui_running")
+    let g:OS#gui = 1
+else
+    let g:OS#gui = 0
+endif
+
+set nocompatible
+
+if g:OS#win
+    " MyDiff {{{
+    set diffexpr=MyDiff()
+    function MyDiff()
+      let opt = '-a --binary '
+      if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+      if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+      let arg1 = v:fname_in
+      if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+      let arg2 = v:fname_new
+      if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+      let arg3 = v:fname_out
+      if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+      let eq = ''
+      if $VIMRUNTIME =~ ' '
+        if &sh =~ '\<cmd'
+          let cmd = '""' . $VIMRUNTIME . '\diff"'
+          let eq = '"'
+        else
+          let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+        endif
+      else
+        let cmd = $VIMRUNTIME . '\diff'
+      endif
+      silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+    endfunction
+endif
+
+function! Jump2DiffText(dir)
+    if a:dir=="prev"
+        exec "normal [c"
+    elseif a:dir=="next"
+        exec "normal ]c"
+    endif
+    if synIDattr(diff_hlID(".", col(".")), "name")=="DiffChange"
+        let line=line(".")
+        let cols=col("$")-1
+        let idx=1
+        while idx<=cols
+            if synIDattr(diff_hlID(line, idx), "name")=="DiffText"
+                call setpos(".", [0,line,idx])
+                echo line.",".idx.",".cols
+                break
+            else
+                let idx = idx+1
+            endif
+        endwhile
+    endif
+endfunction
+
+" @see http://vim.wikia.com/wiki/Selecting_changes_in_diff_mode
+if &diff
+    nmap <buffer> <F7> :call Jump2DiffText("prev")<cr>
+    nmap <buffer> <F8> :call Jump2DiffText("next")<cr>
+else
+    map <buffer> <F7> :cp<cr>
+    map <buffer> <F8> :cn<cr>
+endif
+
+"cnoremap js javascript
+"cnoremap vm velocity
+"cabbrev js javascript
+"cabbrev vm velocity
+"cabbrev utf set fenc=utf8
+"cabbrev utf8 set fenc=utf8
+"cabbrev gbk set fenc=gbk
+
+" }}}
+
+" -------------------------------- Settings ----------------------------- {{{
+" quick startup mode.
+"set shortmess=atI
+
+" encoding
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+"set fileencodings=ucs-bom,utf-8,chinese,latin-1
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+" 文件格式，默认 ffs=dos,unix
+set fileformat=unix
+set fileformats=unix,dos,mac
+
+" set default(normal) window size.
+set columns=90
+set lines=30
+
+
+hi TabLine     cterm=none ctermfg=lightgrey ctermbg=lightblue guifg=gray guibg=black
+hi TabLineSel  cterm=none ctermfg=lightgrey ctermbg=LightMagenta guifg=white guibg=black
+hi TabLineFill cterm=none ctermfg=lightblue ctermbg=lightblue guifg=black guibg=black
+
+
+" @see :help mbyte-IME
+if has('multi_byte_ime')
+    highlight Cursor guibg=#F0E68C guifg=#708090
+    highlight CursorIM guibg=Purple guifg=NONE
+endif
+
+
+" auto mkview and loadview.
+if !&diff
+    au BufWinLeave *.js,*.css silent mkview
+    au BufWinEnter *.js,*.css silent loadview
+endif
+
+
+" Tabs
+set softtabstop=4
+set expandtab       " replace tab to whitespace.
+set tabstop=4       " show tab indent word space.
+set shiftwidth=4    " tab length
+
+
+"set linebreak       " break full word.
+set smartindent
+
+
+set splitright
+"set splitbelow
+
+
+" fixed.
+set scrolloff=3
+
+if g:OS#gui
+    set autochdir
+    set colorcolumn=81
+endif
+
+
+" file
+set noswapfile " 不生成swap文件
+
+set nowb
+set nobackup " 不生成备份文件
+
 
 """"""""""""powerline""""""""""""
 set t_Co=256
 
 set rtp+=/home/lizheng/.vim/bundle/powerline/powerline/bindings/vim
 set guifont=PowerlineSymbols\ for\ Powerline
-set nocompatible
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 let Powerline_symbols='compatible'
 
-"""""""""""""""""""""""""""""文件设置""""""""""""""""""""""""""""""""""
-set fileencodings=utf-8,gb18030,utf-16,big5
 
-" 不要vim模仿vi模式，建议设置，否则有不兼容问题
-set nocompatible
-
-set noswapfile " 不生成swap文件
-
-set nowb
-set nobackup " 不生成备份文件
 """""""""""""""""""""""""""""常规设置""""""""""""""""""""""""""""""""""
-" 字体的设置
-set guifont=Courier\_10\_Pitch\_12
-" set gfw=幼圆:h10:cGB2312
-
 let mapleader = ","
 " 设置leader为',',默认为„\
 let g:mapleader = ","
 
-" 打开高亮
-" syntax on
 " 编辑过程中，在右下角显示光标位置的状态行
 set ruler
 
@@ -49,14 +192,8 @@ set listchars=tab:>-,trail:-
 set list
 
 """"""""""""""""""""""""""""""编程设置""""""""""""""""""""""""""""'
-" tab键宽
-set tabstop=4
-" 换行时行间交错使用4空格
-set shiftwidth=4
 " no自动换行
 set nowrap
-" 空格代替TAB
-" set expandtab
 " 允许退格键
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 " 自动缩进
@@ -75,7 +212,7 @@ if has("autocmd") " 根据文件缩进
     filetype plugin indent on
     augroup vimrcEx
         au!
-        autocmd FileType text setlocal textwidth=78
+        autocmd FileType text setlocal textwidth=80
         autocmd BufReadPost *
                     \ if line("'\"") > 1 && line("'\"") <= line("$") |
                     \ exe "normal! g'\"" |
@@ -84,6 +221,8 @@ if has("autocmd") " 根据文件缩进
 else " always set autoindent on
     set autoindent
 endif " has("autocmd")
+
+
 
 """"""""""""""""""""""""""ctags和cscope(绑定F12)""""""""""""""""""""""""""
 " set tags=tags;
@@ -172,6 +311,8 @@ let NERDShutup=1 "支持单行和多行的选择，//格式
 
 
 """""""""""""""""""""""""NERDTree""""""""""""""""""""""""
+let g:NERDTreeWinPos="left"
+let g:NERDTreeWinSize=20
 map <F2> :NERDTree<CR> "F2打开NERDTree 
 map <F4> :NERDTreeClose<CR> "F4关闭
 
@@ -263,8 +404,8 @@ let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
 
 inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
 
-""""""""""""""80 notice""""""""""""
-" :set colorcolumn=80
+""""""""""""""81 notice""""""""""""
+" :set colorcolumn=81
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
   match OverLength /\%81v./
 
