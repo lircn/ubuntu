@@ -16,6 +16,9 @@ case $1 in
 	out)
 		cd /home/lizheng/work/tr781/out/debug/target/product/tr781/system/bin
 		;;
+    k)
+        cd /usr/src/linux-headers-3.2.0-54/include/linux
+        ;;
 
 
 	*)
@@ -24,5 +27,6 @@ case $1 in
 		echo "wlan /home/lizheng/work/tr781/device/tp-link/wlan/wlan_utilities"
 		echo "inc  /home/lizheng/work/tr781/system/core/include/private"
 		echo "out  /home/lizheng/work/tr781/out/debug/target/product/tr781/system/bin"
+		echo "k    /usr/src/linux-headers-3.2.0-54/include/linux"
 		;;
 esac

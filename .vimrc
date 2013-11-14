@@ -3,16 +3,19 @@ if (has("win32") || has("win95") || has("win64") || has("win16") || has("win32un
     let g:OS#win = 1
     let g:OS#mac = 0
     let g:OS#unix = 0
+    let g:iswindows = 1
 elseif has("mac")
     let g:OS#name = "mac"
     let g:OS#mac = 1
     let g:OS#win = 0
     let g:OS#unix = 0
+    let g:iswindows = 0
 elseif has("unix")
     let g:OS#name = "unix"
     let g:OS#unix = 1
     let g:OS#win = 0
     let g:OS#mac = 0
+    let g:iswindows = 0
 endif
 if has("gui_running")
     let g:OS#gui = 1
@@ -107,11 +110,6 @@ source $VIMRUNTIME/menu.vim
 " 文件格式，默认 ffs=dos,unix
 set fileformat=unix
 set fileformats=unix,dos,mac
-
-" set default(normal) window size.
-set columns=90
-set lines=30
-
 
 hi TabLine     cterm=none ctermfg=lightgrey ctermbg=lightblue guifg=gray guibg=black
 hi TabLineSel  cterm=none ctermfg=lightgrey ctermbg=LightMagenta guifg=white guibg=black
