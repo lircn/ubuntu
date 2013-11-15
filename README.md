@@ -13,7 +13,6 @@ export EDITOR = vim
 guide
 -----
 ln -s ~/git/ubuntu/bin ~/
-ln -s ~/git/ubuntu/vim/c.snippets ~/.vim/bundle/snipMate/snippets
-ln -s ~/git/ubuntu/vim/sh.snippets ~/.vim/bundle/snipMate/snippets
+ln -s ~/git/ubuntu/vim/snippets ~/.vim/bundle/snipMate/
 ln -s ~/git/ubuntu/.vimrc ~/
 
