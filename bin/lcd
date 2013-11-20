@@ -4,6 +4,9 @@
 # Author: Li Zheng <lizheng_w5625@tp-link.com.cn>
 
 case $1 in
+    781)
+        cd /home/lizheng/work/tr781/device/tp-link
+        ;;
 	netm)
 		cd /home/lizheng/work/tr781/device/tp-link/net/netm
 		;;
@@ -28,5 +31,6 @@ case $1 in
 		echo "inc  /home/lizheng/work/tr781/system/core/include/private"
 		echo "out  /home/lizheng/work/tr781/out/debug/target/product/tr781/system/bin"
 		echo "k    /usr/src/linux-headers-3.2.0-54/include/linux"
+		echo "781  /home/lizheng/work/tr781/device/tp-link"
 		;;
 esac

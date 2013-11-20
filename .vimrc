@@ -502,3 +502,9 @@ endfunction
 "map <c-w><c-t> :WMToggle<cr>
 "let g:winManagerWindowLayout='FileExplorer|TagList'
 ":map <F6> :WMToggle<cr>
+
+
+
+Bundle "szw/vim-dict"
+set dictionary+=/usr/share/stardict/dic/stardict-langdao-ec-gb-2.4.2
+:map <S-F6> :Dict<CR>
