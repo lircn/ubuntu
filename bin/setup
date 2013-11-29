@@ -3,10 +3,5 @@
 # Author: Li Zheng <lizheng_w5625@tp-link.net>
 # Date:   2013-11-06
 
-PWD=echo `pwd`
-OLD=$PWD
-
-cd /home/lizheng/work/tr781/
-source ./build/envsetup.sh
-
-cd $OLD/
+source /home/lizheng/work/tr781/build/envsetup.sh
+choosecombo 2 tr781 3
