@@ -429,7 +429,7 @@ Bundle "scrooloose/nerdcommenter"
 Bundle "godlygeek/tabular"
 
 Bundle "vim-scripts/taglist.vim"
-Bundle "Lokaltog/powerline"
+Bundle "Lokaltog/vim-powerline"
 
 Bundle "terryma/vim-smooth-scroll"
 Bundle "terryma/vim-multiple-cursors"
