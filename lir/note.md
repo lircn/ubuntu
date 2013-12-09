@@ -15,7 +15,7 @@ hans
 ----
 git clone http://github.com/hh123okbb/hans
 /hans$ make
-/hans$ sudo ./hans -c -p  -n
+/hans$ sudo ./hans -c -p lir -n lir
 
 ssh on tunnel
 ssh -CfNg -D 127.0.0.1:1080 myhost
