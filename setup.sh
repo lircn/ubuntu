@@ -18,8 +18,5 @@ bash $PWD/vim/setup.sh
 # tmux & powerline
 bash $PWD/tmux/setup.sh
 
-# bin
-ln -f -s $PWD/bin ~/bin
-
 ln -f -s $PWD/_gitconfig ~/.gitconfig
 
