@@ -1,0 +1,396 @@
+" by Li zheng
+
+let mapleader = ","             " must on the top
+let g:mapleader = ","
+
+set nocompatible                " be iMproved
+filetype off                    " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" Tags
+Bundle 'majutsushi/tagbar.git'
+map <silent> <F7> :TagbarToggle<CR>
+let g:tagbar_left = 1
+let g:tagbar_width = 30
+let g:tagbar_compact = 1
+let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_map_zoomwin = "z"
+let g:tagbar_map_togglefold = "x"
+let g:tagbar_map_jump = "o""
+
+
+" NERDTree
+Bundle "scrooloose/nerdtree"
+map <silent> <F8> :NERDTreeToggle<CR>
+map <silent> <Leader><F8> :NERDTreeFind<CR>
+let NERDChristmasTree=1
+let NERDTreeAutoCenter=1
+let NERDTreeMouseMode=2
+let NERDTreeShowBookmarks=1
+let NERDTreeWinPos='right'
+let NERDTreeWinSize=45
+let NERDTreeShowLineNumbers=0
+let NERDTreeIgnore=['cscope.in.out', 'cscope.out', 'cscope.files', 'cscope.po.out', 'tags', '\.swp$']
+let NERDTreeMapToggleZoom='z'
+let NERDTreeMinimalUI=1
+
+" L9
+Bundle 'vim-scripts/L9'
+
+" I have no idea
+"
+" Bundle 'kien/ctrlp.vim'
+"
+" " Grep
+" "Bundle 'rking/ag.vim'
+
+" Snippet
+Bundle "snipMate"
+
+" Git
+Bundle "tpope/vim-fugitive"
+
+" Misc
+Bundle 'Lokaltog/vim-easymotion.git'
+let g:EasyMotion_leader_key = '<Leader>'
+" I just enable w and j action
+let g:EasyMotion_mapping_f = ''
+let g:EasyMotion_mapping_F = ''
+let g:EasyMotion_mapping_t = ''
+let g:EasyMotion_mapping_T = ''
+let g:EasyMotion_mapping_W = ''
+let g:EasyMotion_mapping_B = ''
+let g:EasyMotion_mapping_e = ''
+let g:EasyMotion_mapping_E = ''
+let g:EasyMotion_mapping_ge = ''
+let g:EasyMotion_mapping_gE = ''
+let g:EasyMotion_mapping_j = ''
+let g:EasyMotion_mapping_k = ''
+let g:EasyMotion_mapping_n = ''
+let g:EasyMotion_mapping_N = ''
+Bundle 'tpope/vim-markdown'
+"Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/DrawIt'
+Bundle "uguu-org/vim-matrix-screensaver"
+
+filetype plugin indent on     " required!
+
+
+" Cscope
+if has("cscope")
+    set csto=1
+    set cst
+    set nocsverb
+    if filereadable("cscope.out")
+        cs add cscope.out
+    endif
+    set csverb
+    set cscopequickfix=s-,g-,c-,t-,e-,f-,i-,d-
+endif
+nmap <F5>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <F5>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <F5>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <F5>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <F5>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <F5>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <F5>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <F5>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+
+
+
+" General
+
+set smartindent
+
+" no自动换行
+set nowrap
+" 允许退格键
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+" 自动缩进
+set ai!
+" 设置匹配模式
+set showmatch
+
+" For myself
+set scrolloff=4
+nmap <S-F5> /<C-R>=expand("<cword>")<CR>
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+autocmd! bufwritepost .vimrc source ~/.vimrc
+set textwidth=0
+set nu
+
+" 将tab显示为>-,尾行空格显示为-
+set listchars=tab:>-,trail:-
+set list
+
+" Tabs
+set softtabstop=4
+set expandtab       " replace tab to space. use <C-V><Tab> to insert a real tab.
+set tabstop=4       " show tab indent word space.
+set shiftwidth=4    " tab length
+
+" encoding
+set encoding=utf-8
+set termencoding=utf-8
+set fileencodings=ucs-bom,utf-8,chinese
+
+set fileformats=unix,dos
+set autoindent
+set showmode
+set showcmd
+set foldlevel=50
+set autoread
+set wildmenu
+set wildignore=*.o,*~,*.pyc
+if has('mouse')
+    set mouse=a
+endif
+" 编辑过程中，在右下角显示光标位置的状态行
+set ruler
+
+" Search
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" Powerline
+Bundle "Lokaltog/vim-powerline"
+set t_Co=256
+set rtp+=/home/lizheng/.vim/bundle/powerline/powerline/bindings/vim
+set guifont=PowerlineSymbols\ for\ Powerline
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+let Powerline_symbols='compatible'
+
+
+
+" Map leader
+map <leader><CR> :noh<CR>
+map <leader>a A
+map <leader>q :qa!<CR>
+
+" Copy to CLIPBOARD, and use 'y' to copy to the PRIMARY
+map <leader>y "+y
+map <leader>p "+p
+
+" Reload cscope and lookup database
+map <leader>rl :cs add cscope.out<CR>:let g:LookupFile_TagExpr = '"./filenametags"'<CR>
+
+" When you press <leader>r you can search and replace the selected text
+" append /g to the end to replace all
+vmap <leader>r :call VisualSelection('replace')<CR>
+
+" When you press gv you vimgrep after the selected text
+vmap <leader>gv :call VisualSelection('gv')<CR>
+
+
+" Normal map
+
+" Move between windows
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map <C-h> <C-w>h
+
+nmap - ^
+nmap = $
+vmap - ^
+vmap = $
+
+" use Q for recording
+noremap q <Nop>
+noremap Q q
+
+" Highlighting all the same word under the cursor, like use SI.
+nmap <S-F8> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
+
+" Highlighting all the same string according to current selection
+vnoremap <S-F8> :call VisualSelection('f')<CR>
+
+" jump to the match brace
+map ]] ]}
+map [[ [{
+
+" Look up dictionary
+nmap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
+vmap ? :call VisualSelection('?')<CR><CR>
+
+" 快捷删除行末空白，展开tab，移除
+function! Clean()
+    exec 'retab'
+    exec '%s/\s\+$//e'
+    exec 'silent! %s/$//g'
+endfunction
+nmap <F9> :call Clean()<CR>
+
+
+
+
+" 行选择,然后:Tabularize/=则把所选行的=全部对齐
+Bundle "godlygeek/tabular"
+
+" Color
+colorscheme darkburn_ie7
+
+" 81 notice
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v./
+colorscheme darkburn_ie7
+syntax enable
+
+
+
+" Helper functions
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+function! VisualSelection(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    elseif a:direction == '?'
+        call CmdLine("!sdcv " . l:pattern)
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
+
+
+
+
+
+
+
+" 括号和引号补全
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {<CR>}<Esc>O
+
+"autocmd Syntax html,vim inoremap < <lt>><Esc>i | inoremap > <c-r>=ClosePair('>')<CR>
+
+inoremap ) <c-r>=ClosePair(')')<CR>
+inoremap ] <C-r>=ClosePair(']')<CR>
+inoremap } <C-r>=CloseBracket()<CR>
+inoremap " <C-r>=QuoteDelim('"')<CR>
+inoremap ' <C-r>=QuoteDelim("'")<CR>
+
+function ClosePair(char)
+	if getline('.')[col('.') - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char
+	endif
+endf
+
+function CloseBracket()
+	if match(getline(line('.') + 1), '\s*}') < 0
+		return "\<CR>}"
+	else
+		return "\<Esc>j0f}a"
+	endif
+endf
+
+function QuoteDelim(char)
+	let line = getline('.')
+	let col = col('.')
+	if line[col - 2] == "\\"
+		" Inserting a quoted quotation mark into the string
+		return a:char
+	elseif line[col - 1] == a:char
+		" Escaping out of the string
+		return "\<Right>"
+	else
+		" Starting a string
+		return a:char.a:char."\<Esc>i"
+	endif
+endf
+
+
+
+
+"""""""""""""""""NeoComplCache"""""""""""""""
+Bundle "Shougo/neocomplcache"
+
+" enable the NCC
+let g:neocomplcache_enable_at_startup = 1
+"let g:NeoComplCache_DisableAutoComplete = 1
+" use smartcase
+let g:neocomplcache_enable_smart_case = 1
+" use camel case completion
+let g:neocomplcache_enable_camel_case_completion = 1
+" use underbar completion
+let g:neocomplcache_enable_underbar_completion = 1
+" set minimum syntax keyword length
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" AutoComplPop like behavior
+let g:neocomplcache_enable_auto_select = 0
+
+" when you input 'ho-a', ncc will select candidate 'a'
+let g:neocomplcache_enable_quick_match = 1
+
+" define dictionary
+let g:neocomplcache_dictionary_filetype_lists = {
+	\ 'default' : '',
+	\ 'vimshell' : $HOME.'/.vimshell_hist',
+	\ 'scheme' : $HOME.'/.gosh_completions',
+	\ 'css' : $VIMFILES.'/dict/css.dic',
+	\ 'php' : $VIMFILES.'/dict/php.dic',
+	\ 'javascript' : $VIMFILES.'/dict/javascript.dic'
+	\ }
+let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
+
+inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
+
+
+
+
+
+""""""""""""""VimGdb""""""""""""""""""
+"Bundle "larrupingpig/vimgdb-for-vim7.3"
+
+":set previewheight=12
+":run macros/gdb_mappings.vim
+":set asm=0
+":set gdbprg=/usr/bin/gdb
+":map <F7> :bel 30vsplit gdb-variables<cr>
+":map <F8> :close<Esc>
+"map <c-w><c-f> :FirstExplorerWindow<cr>
+"map <c-w><c-b> :BottomExplorerWindow<cr>
+"map <c-w><c-t> :WMToggle<cr>
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+":map <F6> :WMToggle<cr>
+
+
+"set dictionary+=/usr/share/stardict/dic/stardict-langdao-ec-gb-2.4.2
