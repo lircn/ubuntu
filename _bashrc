@@ -118,7 +118,7 @@ export PATH=~/bin:~/scripts:$PATH
 
 function hanssh()
 {
-    sudo hans -c 106.186.28.188 -p lir -n lir
+    sudo ~/work/hans/hans -c 106.186.28.188 -p lir -n lir
     sleep 1
     ssh -CNvg -D 127.0.0.1:1080 lir@10.9.9.1
 }
