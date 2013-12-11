@@ -185,9 +185,6 @@ map <leader>q :qa!<CR>
 map <leader>y "+y
 map <leader>p "+p
 
-" Reload cscope and lookup database
-map <leader>rl :cs add cscope.out<CR>:let g:LookupFile_TagExpr = '"./filenametags"'<CR>
-
 " When you press <leader>r you can search and replace the selected text
 " append /g to the end to replace all
 vmap <leader>r :call VisualSelection('replace')<CR>
@@ -228,12 +225,10 @@ nmap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
 vmap ? :call VisualSelection('?')<CR><CR>
 
 " 快捷删除行末空白，展开tab，移除
-function! Clean()
-    exec 'retab'
-    exec '%s/\s\+$//e'
-    exec 'silent! %s/$//g'
-endfunction
 nmap <F9> :call Clean()<CR>
+
+nmap <F12> :call Do_CsTag()<CR>
+
 
 
 
@@ -246,6 +241,7 @@ colorscheme darkburn_ie7
 
 " 81 notice
 syntax enable
+
 
 
 " Helper functions
@@ -279,8 +275,52 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
+function Do_CsTag()
+    let dir = getcwd()
+    if filereadable("tags")
+        let tagsdeleted = delete("./"."tags")
+        if(tagsdeleted != 0)
+            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
+            return
+        endif
+    endif
+    if has("cscope")
+        silent! execute "cs kill -1"
+    endif
+    if filereadable("cscope.files")
+        let csfilesdeleted=delete("./"."cscope.files")
+        if(csfilesdeleted!=0)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
+            return
+        endif
+    endif
+    if filereadable("cscope.out")
+        let csoutdeleted=delete("./"."cscope.out")
+        if(csoutdeleted!=0)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
+            return
+        endif
+    endif
+    if(executable('ctags'))
+        silent! execute "!ctags -R --c-kinds=+p --fields=+S *"
+        " execute "!ctags -R --c++-kinds=-p --fields=+iaS --extra=+q ."
+    endif
+    if(executable('cscope')&&has("cscope"))
+        silent! execute "!find . -name '.svn' -prune -o -name '.git' -prune -o -name '*.h' -o -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
+    endif
+    execute "!cscope -Rbq"
+    execute "normal :"
+    if filereadable("cscope.out")
+        execute "cs add cscope.out"
+    endif
+    let g:LookupFile_TagExpr = '"./filenametags"'
+endfunction
 
-
+function! Clean()
+    exec 'retab'
+    exec '%s/\s\+$//e'
+    exec 'silent! %s/$//g'
+endfunction
 
 
 
@@ -384,3 +424,7 @@ inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" :
 
 
 "set dictionary+=/usr/share/stardict/dic/stardict-langdao-ec-gb-2.4.2
+"
+
+
+
