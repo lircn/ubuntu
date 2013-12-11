@@ -245,11 +245,7 @@ Bundle "godlygeek/tabular"
 colorscheme darkburn_ie7
 
 " 81 notice
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v./
-colorscheme darkburn_ie7
 syntax enable
-
 
 
 " Helper functions
@@ -289,14 +285,10 @@ endfunction
 
 
 
-
-
 " 括号和引号补全
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
-inoremap { {<CR>}<Esc>O
-
-"autocmd Syntax html,vim inoremap < <lt>><Esc>i | inoremap > <c-r>=ClosePair('>')<CR>
+inoremap { {}<Esc>i
 
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <C-r>=ClosePair(']')<CR>
@@ -334,8 +326,6 @@ function QuoteDelim(char)
 		return a:char.a:char."\<Esc>i"
 	endif
 endf
-
-
 
 
 """""""""""""""""NeoComplCache"""""""""""""""

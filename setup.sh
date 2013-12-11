@@ -10,7 +10,7 @@ ln -f -s $PWD/_bashrc ~/.bashrc
 echo "=== DONE! ==="
 
 # scripts
-ln -f -s $PWD/scripts ~/scripts
+ln -f -s $PWD/scripts ~/
 
 # vim
 bash $PWD/vim/setup.sh

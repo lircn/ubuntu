@@ -3,8 +3,8 @@
 P=`readlink -f $(dirname $0)`
 
 # vim files
-ln -f -s $P/colors ~/.vim/colors
-ln -f -s $P/snippets ~/.vim/bundle/snipMate/snippets
+ln -f -s $P/colors ~/.vim/
+ln -f -s $P/snippets ~/.vim/bundle/snipMate/
 ln -f -s $P/_vimrc ~/.vimrc
 
 # setup dictionary

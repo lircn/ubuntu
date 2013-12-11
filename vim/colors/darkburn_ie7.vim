@@ -316,4 +316,7 @@ else
 endif
     " TODO check for more obscure syntax groups that they're ok
 
-" vim: :
+" vim
+" 81 notice
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength '\%81v.'
