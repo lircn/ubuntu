@@ -18,7 +18,7 @@ hans
     /hans$ sudo ./hans -c -p lir -n lir
 
 ssh on tunnel
-    ssh -CfNg -D 127.0.0.1:1080 myhost
+    ssh -CNvg -D 127.0.0.1:1080 myhost
 
 server
     hans -d -p -s -n
