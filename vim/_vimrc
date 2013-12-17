@@ -15,7 +15,7 @@ Bundle 'gmarik/vundle'
 
 " Tags
 Bundle 'majutsushi/tagbar.git'
-map <silent> <F7> :TagbarToggle<CR>
+map <silent> <F2> :TagbarToggle<CR>
 let g:tagbar_left = 1
 let g:tagbar_width = 30
 let g:tagbar_compact = 1
@@ -27,8 +27,8 @@ let g:tagbar_map_jump = "o""
 
 " NERDTree
 Bundle "scrooloose/nerdtree"
-map <silent> <F8> :NERDTreeToggle<CR>
-map <silent> <Leader><F8> :NERDTreeFind<CR>
+map <silent> <F3> :NERDTreeToggle<CR>
+map <silent> <Leader><F3> :NERDTreeFind<CR>
 let NERDChristmasTree=1
 let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=2
@@ -213,10 +213,10 @@ noremap q <Nop>
 noremap Q q
 
 " Highlighting all the same word under the cursor, like use SI.
-nmap <S-F8> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
+nmap <F6> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
 
 " Highlighting all the same string according to current selection
-vnoremap <S-F8> :call VisualSelection('f')<CR>
+vnoremap <F6> :call VisualSelection('f')<CR>
 
 " jump to the match brace
 map ]] ]}
