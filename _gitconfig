@@ -9,3 +9,6 @@
     d = diff
 [core]
     editor = vim
+[user]
+	name = Li Zheng
+	email = lizheng_w5625@tp-link.net
