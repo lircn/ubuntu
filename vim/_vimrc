@@ -239,7 +239,7 @@ nmap <F12> :call Do_CsTag()<CR>
 Bundle "godlygeek/tabular"
 
 " Color
-colorscheme darkburn_ie7
+colorscheme darkburn_lir
 
 " 81 notice
 syntax enable
