@@ -136,22 +136,22 @@ function xfindi()
 
 function jgrep()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$*"
 }
 
 function jgrepi()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep -i --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep -i --color -n "$*"
 }
 
 function cgrep()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep --color -n "$*"
 }
 
 function cgrepi()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep -i --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep -i --color -n "$*"
 }
 
 function resgrep()
@@ -167,12 +167,12 @@ function resgrepi()
 # Makefile
 function mgrep()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' \) -print0 | xargs -0 grep --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' \) -print0 | xargs -0 grep --color -n "$*"
 }
 
 function mgrepi()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' \) -print0 | xargs -0 grep -i --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' \) -print0 | xargs -0 grep -i --color -n "$*"
 }
 
 # pdf
