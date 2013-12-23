@@ -116,13 +116,15 @@ fi
 export PATH=~/bin:~/scripts:$PATH
 
 
-function hanssh()
+function lhanslir()
 {
     sudo ~/work/hans/hans -c 106.186.28.188 -p lir -n lir -m 900
-    sleep 3
-    ssh -CNfg -D 127.0.0.1:1080 lir@10.9.9.1
 }
 
+function lsshlir()
+{
+    ssh -CNfg -D 127.0.0.1:1080 lir@10.9.9.1
+}
 
 function xfind()
 {
