@@ -118,7 +118,12 @@ export PATH=~/bin:~/scripts:$PATH
 
 function lhanslir()
 {
-    sudo ~/work/hans/hans -c 106.186.28.188 -p lir -n lir -m 900
+    if [[ $# -ge 1 ]]; then
+        mtu=$1
+    else
+        mtu=1400
+    fi
+    sudo ~/work/hans/hans -c 106.186.28.188 -p lir -n lir -m $mtu
 }
 
 function lsshlir()
