@@ -47,7 +47,7 @@ class ParseContent:
         lines = stream.readlines();
         list = map(string.strip,lines)
         return list
-    
+
 inputarg = sys.argv
 if len(inputarg) < 2:
     print 'Please input panic log'
