@@ -205,8 +205,6 @@ map <C-h> <C-w>h
 
 nmap - ^
 nmap = $
-vmap - ^
-vmap = $
 
 " use Q for recording
 noremap q <Nop>
@@ -410,7 +408,7 @@ endf
 
 function! CloseBracket()
 	if match(getline(line('.') + 1), '\s*}') < 0
-		return "\<CR>}"
+		return "}"
 	else
 		return "\<Esc>j0f}a"
 	endif
