@@ -108,8 +108,8 @@ nmap <F5>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 
 set smartindent
 
-" no自动换行
-set nowrap
+" 自动换行
+set wrap
 " 允许退格键
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 " 自动缩进
@@ -135,7 +135,7 @@ set list
 
 " Tabs
 set softtabstop=4
-set expandtab       " replace tab to space. use <C-V><Tab> to insert a real tab.
+set noexpandtab       " replace tab to space. use <C-V><Tab> to insert a real tab.
 set tabstop=4       " show tab indent word space.
 set shiftwidth=4    " tab length
 
