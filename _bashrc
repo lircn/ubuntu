@@ -123,12 +123,12 @@ function lhanslir()
     else
         mtu=1400
     fi
-    sudo ~/work/hans/hans -c 106.186.28.188 -p lir -n lir -m $mtu
+    sudo ~/work/hans/hans -c 106.186.28.188 -p lirlir -n lirlir -m $mtu
 }
 
 function lsshlir()
 {
-    ssh -CNfg -D 127.0.0.1:1080 lir@10.9.9.1
+    ssh -CNfg -D 127.0.0.1:1080 lir@10.50.50.1
 }
 
 function xfind()
