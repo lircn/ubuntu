@@ -43,15 +43,35 @@ let NERDTreeMinimalUI=1
 " L9
 Bundle 'vim-scripts/L9'
 
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_regexp = 1
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
+let g:ctrlp_max_files = 0
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_custom_ignore = {
+\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+\ 'file': '\v\.(exe|so|dll)$',
+\ }
+
 " I have no idea
-"
-" Bundle 'kien/ctrlp.vim'
 "
 " " Grep
 " "Bundle 'rking/ag.vim'
 
+" Syntax checker
+Bundle 'scrooloose/syntastic'
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+map <silent> <leader>sc :SyntasticCheck<CR>
+map <silent> <leader>sr :SyntasticReset<CR>
+
 " Snippet
-Bundle "snipMate"
+Bundle 'msanders/snipmate.vim.git'
+let g:snips_author = 'Li Zheng <lizheng_w5625@tp-link.net>'
 
 " Git
 Bundle "tpope/vim-fugitive"
@@ -75,9 +95,16 @@ let g:EasyMotion_mapping_k = ''
 let g:EasyMotion_mapping_n = ''
 let g:EasyMotion_mapping_N = ''
 Bundle 'tpope/vim-markdown'
-"Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/DrawIt'
 Bundle "uguu-org/vim-matrix-screensaver"
+
+" Lua
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-lua-inspect'
+Bundle 'xolox/vim-lua-ftplugin'
+let g:lua_inspect_warnings = 0
+let g:loaded_luainspect = 1
 
 filetype plugin indent on     " required!
 
@@ -91,8 +118,18 @@ if has("cscope")
         cs add cscope.out
     endif
     set csverb
-"    set cscopequickfix=s-,g-,c-,t-,e-,f-,i-,d-
+    set cscopequickfix=s-,g-,c-,t-,e-,f-,i-,d-
 endif
+"s: Find this C symbol
+"g: Find this definition
+"c: Find functions calling this function
+"t: Find this text string
+"d: Find functions called by this function
+"	*gd* will be more helpful without cscope database
+"e: Find this egrep pattern
+"f: Find this file
+"	*gf* will be more helpful without cscope database
+"i: Find files #including this file
 nmap <F5>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <F5>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <F5>c :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -106,7 +143,8 @@ nmap <F5>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 
 " General
 
-set smartindent
+" Use space to replace tab, can usb <C-V><Tab> to insert a real tab
+set expandtab
 
 " 自动换行
 set wrap
@@ -119,6 +157,7 @@ set showmatch
 
 " For myself
 set scrolloff=4
+set cmdheight=2
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -126,6 +165,8 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+set title
 set textwidth=0
 set nu
 
@@ -173,9 +214,13 @@ set laststatus=2
 let g:Powerline_symbols = 'fancy'
 let Powerline_symbols='compatible'
 
-
+" persistent undo
+set undofile
+set undodir=~/.vim/undodir
 
 " Map leader
+map <leader>ss :source ~/.vimrc<CR>:noh<CR>
+map <leader>ee :e ~/.vimrc<CR>
 map <leader><CR> :noh<CR>
 map <leader>a A
 map <leader>q :qa!<CR>
@@ -183,6 +228,9 @@ map <leader>q :qa!<CR>
 " Copy to CLIPBOARD, and use 'y' to copy to the PRIMARY
 map <leader>y "+y
 map <leader>p "+p
+
+" Switch CWD
+map <leader>cd :cd %:p:h<CR>:call GetCwd()<CR>
 
 " Reload cscope and lookup database
 map <leader>rl :cs add cscope.out<CR>:let g:LookupFile_TagExpr = '"./filenametags"'<CR>
@@ -194,6 +242,11 @@ vmap <leader>r :call VisualSelection('replace')<CR>
 " When you press gv you vimgrep after the selected text
 vmap <leader>gv :call VisualSelection('gv')<CR>
 
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
 " Normal map
 
@@ -203,18 +256,29 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
 
+" replaced by <C-c>
 nmap - ^
 nmap = $
+vmap - ^
+vmap = $
 
 " use Q for recording
 noremap q <Nop>
 noremap Q q
 
 " Highlighting all the same word under the cursor, like use SI.
-nmap <F6> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
+nmap <S-F5> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
 
 " Highlighting all the same string according to current selection
-vnoremap <F6> :call VisualSelection('f')<CR>
+vnoremap <S-F5> :call VisualSelection('f')<CR>
+
+" Look up dictionary, cover IndexedSearch's map
+autocmd! VimEnter * :nnoremap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
+vmap ? :call VisualSelection('?')<CR><CR>
+
+" Auto convert a word to a $(shell variable
+imap <C-h> <ESC>bi${<ESC>exea}
+imap <C-g> <ESC>bi$(<ESC>exea)
 
 " jump to the match brace
 map ]] ]}
@@ -224,13 +288,13 @@ map [[ [{
 nmap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
 vmap ? :call VisualSelection('?')<CR><CR>
 
+" Open a fully width quickfix window at the bottom of vim
+map <F9> :botright cwindow<CR>
+
 " 快捷删除行末空白，展开tab，移除
-nmap <F9> :call Clean()<CR>
+nmap <F11> :call Clean()<CR>
 
 nmap <F12> :call Do_CsTag()<CR>
-
-
-
 
 
 " 行选择,然后:Tabularize/=则把所选行的=全部对齐
@@ -243,18 +307,14 @@ colorscheme darkburn_lir
 syntax enable
 
 
-
-
-
-
 " 括号和引号补全
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
 
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <C-r>=ClosePair(']')<CR>
-inoremap } <C-r>=CloseBracket()<CR>
+" inoremap ) <c-r>=ClosePair(')')<CR>
+" inoremap ] <C-r>=ClosePair(']')<CR>
+" inoremap } <C-r>=CloseBracket()<CR>
 inoremap " <C-r>=QuoteDelim('"')<CR>
 inoremap ' <C-r>=QuoteDelim("'")<CR>
 
