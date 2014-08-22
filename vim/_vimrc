@@ -261,8 +261,6 @@ map <C-h> <C-w>h
 " replaced by <C-c>
 nmap - ^
 nmap = $
-vmap - ^
-vmap = $
 
 " use Q for recording
 noremap q <Nop>
