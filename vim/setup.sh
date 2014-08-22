@@ -3,9 +3,19 @@
 P=`readlink -f $(dirname $0)`
 
 # vim files
-ln -f -s $P/colors ~/.vim/
-ln -f -s $P/snippets/* ~/.vim/bundle/snipmate.vim/snippets/
-ln -f -s $P/_vimrc ~/.vimrc
+echo -n "Backup your original vim files? (y/n)"
+read IN
+if [ "$IN" = "y" ] || [ "$IN" = "Y" ]; then
+    rm -rf ~/.vim_backup; mv -f ~/.vim ~/.vim_backup
+    rm -f ~/.vimrc_backup; mv -f ~/.vimrc ~/.vimrc_backup
+fi
+
+rm -rf ~/.vim
+rm -f ~/.vimrc
+
+# vim files
+ln -sd $P ~/.vim
+ln -s $P/_vimrc ~/.vimrc
 
 echo "=== DONE! ==="
 

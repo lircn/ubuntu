@@ -6,15 +6,17 @@ let g:mapleader = ","
 set nocompatible                " be iMproved
 filetype off                    " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " Tags
-Bundle 'majutsushi/tagbar.git'
+Plugin 'majutsushi/tagbar.git'
 map <silent> <F2> :TagbarToggle<CR>
 let g:tagbar_left = 1
 let g:tagbar_width = 30
@@ -26,7 +28,7 @@ let g:tagbar_map_jump = "o""
 
 
 " NERDTree
-Bundle "scrooloose/nerdtree"
+Plugin 'scrooloose/nerdtree'
 map <silent> <F3> :NERDTreeToggle<CR>
 map <silent> <Leader><F3> :NERDTreeFind<CR>
 let NERDChristmasTree=1
@@ -41,9 +43,9 @@ let NERDTreeMapToggleZoom='z'
 let NERDTreeMinimalUI=1
 
 " L9
-Bundle 'vim-scripts/L9'
+Plugin 'vim-scripts/L9'
 
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map= '<C-p>'
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_lazy_update = 1
@@ -61,24 +63,24 @@ let g:ctrlp_custom_ignore = {
 " I have no idea
 "
 " " Grep
-" "Bundle 'rking/ag.vim'
+" "Plugin 'rking/ag.vim'
 
 " Syntax checker
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 map <silent> <leader>sc :SyntasticCheck<CR>
 map <silent> <leader>sr :SyntasticReset<CR>
 
 " Snippet
-Bundle 'msanders/snipmate.vim.git'
+Plugin 'msanders/snipmate.vim.git'
 let g:snips_author = 'Li Zheng <lizheng_w5625@tp-link.net>'
 
 " Git
-Bundle "tpope/vim-fugitive"
+Plugin 'tpope/vim-fugitive'
 
 " Misc
-Bundle 'Lokaltog/vim-easymotion.git'
+Plugin 'Lokaltog/vim-easymotion.git'
 let g:EasyMotion_leader_key = '<Leader>'
 " I just enable w and j action
 let g:EasyMotion_mapping_f = ''
@@ -95,15 +97,15 @@ let g:EasyMotion_mapping_j = '<Leader>j'
 let g:EasyMotion_mapping_k = ''
 let g:EasyMotion_mapping_n = ''
 let g:EasyMotion_mapping_N = ''
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/DrawIt'
-Bundle "uguu-org/vim-matrix-screensaver"
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/DrawIt'
+Plugin 'uguu-org/vim-matrix-screensaver'
 
 " Lua
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-lua-inspect'
-Bundle 'xolox/vim-lua-ftplugin'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-lua-inspect'
+Plugin 'xolox/vim-lua-ftplugin'
 let g:lua_inspect_warnings = 0
 let g:loaded_luainspect = 1
 
@@ -126,10 +128,10 @@ endif
 "c: Find functions calling this function
 "t: Find this text string
 "d: Find functions called by this function
-"	*gd* will be more helpful without cscope database
+"   *gd* will be more helpful without cscope database
 "e: Find this egrep pattern
 "f: Find this file
-"	*gf* will be more helpful without cscope database
+"   *gf* will be more helpful without cscope database
 "i: Find files #including this file
 nmap <F5>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <F5>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -207,7 +209,7 @@ set ignorecase
 set smartcase
 
 " Powerline
-Bundle "Lokaltog/vim-powerline"
+Plugin 'Lokaltog/vim-powerline'
 set t_Co=256
 set rtp+=/home/lizheng/.vim/bundle/powerline/powerline/bindings/vim
 set guifont=PowerlineSymbols\ for\ Powerline
@@ -299,7 +301,7 @@ nmap <F12> :call Do_CsTag()<CR>
 
 
 " 行选择,然后:Tabularize/=则把所选行的=全部对齐
-Bundle "godlygeek/tabular"
+Plugin 'godlygeek/tabular'
 
 " Color
 colorscheme darkburn_lir
@@ -320,7 +322,7 @@ inoremap ' <C-r>=QuoteDelim("'")<CR>
 
 
 """""""""""""""""NeoComplCache"""""""""""""""
-Bundle "Shougo/neocomplcache"
+Plugin 'Shougo/neocomplcache'
 
 " enable the NCC
 let g:neocomplcache_enable_at_startup = 1
@@ -343,13 +345,13 @@ let g:neocomplcache_enable_quick_match = 1
 
 " define dictionary
 let g:neocomplcache_dictionary_filetype_lists = {
-	\ 'default' : '',
-	\ 'vimshell' : $HOME.'/.vimshell_hist',
-	\ 'scheme' : $HOME.'/.gosh_completions',
-	\ 'css' : $VIMFILES.'/dict/css.dic',
-	\ 'php' : $VIMFILES.'/dict/php.dic',
-	\ 'javascript' : $VIMFILES.'/dict/javascript.dic'
-	\ }
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions',
+    \ 'css' : $VIMFILES.'/dict/css.dic',
+    \ 'php' : $VIMFILES.'/dict/php.dic',
+    \ 'javascript' : $VIMFILES.'/dict/javascript.dic'
+    \ }
 let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
 
 inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
@@ -359,7 +361,7 @@ inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" :
 
 
 """"""""""""""VimGdb""""""""""""""""""
-"Bundle "larrupingpig/vimgdb-for-vim7.3"
+"Plugin "larrupingpig/vimgdb-for-vim7.3"
 
 ":set previewheight=12
 ":run macros/gdb_mappings.vim
@@ -377,7 +379,8 @@ inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" :
 "set dictionary+=/usr/share/stardict/dic/stardict-langdao-ec-gb-2.4.2
 "
 
-
+" required"
+call vundle#end()
 
 " Helper functions
 
@@ -409,7 +412,12 @@ function! VisualSelection(direction) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-  
+
+function! GetCwd()
+    let l:cwd = getcwd()
+    call CmdLine("cd " . l:cwd)
+endfunction
+
 function! Do_CsTag()
     let dir = getcwd()
     if filereadable("tags")
@@ -458,32 +466,32 @@ function! Clean()
 endfunction
 
 function! ClosePair(char)
-	if getline('.')[col('.') - 1] == a:char
-		return "\<Right>"
-	else
-		return a:char
-	endif
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
 endf
 
 function! CloseBracket()
-	if match(getline(line('.') + 1), '\s*}') < 0
-		return "}"
-	else
-		return "\<Esc>j0f}a"
-	endif
+    if match(getline(line('.') + 1), '\s*}') < 0
+        return "}"
+    else
+        return "\<Esc>j0f}a"
+    endif
 endf
 
 function! QuoteDelim(char)
-	let line = getline('.')
-	let col = col('.')
-	if line[col - 2] == "\\"
-		" Inserting a quoted quotation mark into the string
-		return a:char
-	elseif line[col - 1] == a:char
-		" Escaping out of the string
-		return "\<Right>"
-	else
-		" Starting a string
-		return a:char.a:char."\<Esc>i"
-	endif
+    let line = getline('.')
+    let col = col('.')
+    if line[col - 2] == "\\"
+        " Inserting a quoted quotation mark into the string
+        return a:char
+    elseif line[col - 1] == a:char
+        " Escaping out of the string
+        return "\<Right>"
+    else
+        " Starting a string
+        return a:char.a:char."\<Esc>i"
+    endif
 endf
