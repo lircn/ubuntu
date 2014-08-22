@@ -44,6 +44,7 @@ let NERDTreeMinimalUI=1
 Bundle 'vim-scripts/L9'
 
 Bundle 'kien/ctrlp.vim'
+let g:ctrlp_map= '<C-p>'
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_use_caching = 1
@@ -176,7 +177,7 @@ set list
 
 " Tabs
 set softtabstop=4
-set noexpandtab       " replace tab to space. use <C-V><Tab> to insert a real tab.
+" set noexpandtab       " replace tab to space. use <C-V><Tab> to insert a real tab.
 set tabstop=4       " show tab indent word space.
 set shiftwidth=4    " tab length
 
@@ -267,10 +268,10 @@ noremap q <Nop>
 noremap Q q
 
 " Highlighting all the same word under the cursor, like use SI.
-nmap <S-F5> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
+nmap <F6> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
 
 " Highlighting all the same string according to current selection
-vnoremap <S-F5> :call VisualSelection('f')<CR>
+vnoremap <F6> :call VisualSelection('f')<CR>
 
 " Look up dictionary, cover IndexedSearch's map
 autocmd! VimEnter * :nnoremap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
@@ -289,10 +290,10 @@ nmap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
 vmap ? :call VisualSelection('?')<CR><CR>
 
 " Open a fully width quickfix window at the bottom of vim
-map <F9> :botright cwindow<CR>
+map <F8> :botright cwindow<CR>
 
 " 快捷删除行末空白，展开tab，移除
-nmap <F11> :call Clean()<CR>
+nmap <F9> :call Clean()<CR>
 
 nmap <F12> :call Do_CsTag()<CR>
 
@@ -306,11 +307,9 @@ colorscheme darkburn_lir
 " 81 notice
 syntax enable
 
-
 " 括号和引号补全
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
-inoremap { {}<Esc>i
 
 " inoremap ) <c-r>=ClosePair(')')<CR>
 " inoremap ] <C-r>=ClosePair(']')<CR>

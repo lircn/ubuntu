@@ -4,8 +4,10 @@ P=`readlink -f $(dirname $0)`
 
 # vim files
 ln -f -s $P/colors ~/.vim/
-ln -f -s $P/snippets ~/.vim/bundle/snipMate/
+ln -f -s $P/snippets/* ~/.vim/bundle/snipmate.vim/snippets/
 ln -f -s $P/_vimrc ~/.vimrc
+
+echo "=== DONE! ==="
 
 # setup dictionary
 echo -n "Setup dictionary? (y/n)"
