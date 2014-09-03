@@ -105,9 +105,10 @@ Plugin 'uguu-org/vim-matrix-screensaver'
 " Lua
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-inspect'
-Plugin 'xolox/vim-lua-ftplugin'
+" Plugin 'xolox/vim-lua-ftplugin'
 let g:lua_inspect_warnings = 0
 let g:loaded_luainspect = 1
+" autocmd FileType lua setlocal completefunc=xolox#lua
 
 filetype plugin indent on     " required!
 
@@ -121,7 +122,7 @@ if has("cscope")
         cs add cscope.out
     endif
     set csverb
-    set cscopequickfix=s-,g-,c-,t-,e-,f-,i-,d-
+    "set cscopequickfix=s-,g-,c-,t-,e-,f-,i-,d-
 endif
 "s: Find this C symbol
 "g: Find this definition
@@ -157,7 +158,7 @@ set showmatch
 
 " For myself
 set scrolloff=4
-set cmdheight=2
+" set cmdheight=2
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -267,7 +268,7 @@ noremap q <Nop>
 noremap Q q
 
 " Highlighting all the same word under the cursor, like use SI.
-nmap <F6> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
+map <F6> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
 
 " Highlighting all the same string according to current selection
 vnoremap <F6> :call VisualSelection('f')<CR>
@@ -316,14 +317,18 @@ inoremap [ []<Esc>i
 inoremap " <C-r>=QuoteDelim('"')<CR>
 inoremap ' <C-r>=QuoteDelim("'")<CR>
 
+" highlight
+set mps+=<:>
+
 
 
 """""""""""""""""NeoComplCache"""""""""""""""
 Plugin 'Shougo/neocomplcache'
 
-" enable the NCC
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
-"let g:NeoComplCache_DisableAutoComplete = 1
 " use smartcase
 let g:neocomplcache_enable_smart_case = 1
 " use camel case completion
@@ -339,7 +344,6 @@ let g:neocomplcache_enable_auto_select = 0
 
 " when you input 'ho-a', ncc will select candidate 'a'
 let g:neocomplcache_enable_quick_match = 1
-
 " define dictionary
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
@@ -349,19 +353,8 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'php' : $VIMFILES.'/dict/php.dic',
     \ 'javascript' : $VIMFILES.'/dict/javascript.dic'
     \ }
-" let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
+let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
 
-if !exists('g:neocomplcache_force_omni_patterns')
-    let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.c =
-            \ '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp =
-            \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objc =
-            \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objcpp =
-            \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
 
 
