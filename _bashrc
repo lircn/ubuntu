@@ -115,6 +115,7 @@ fi
 
 export PATH=~/bin:~/scripts:$PATH
 
+alias adb='sudo /opt/android-sdk-linux/platform-tools/adb'
 
 function lhanslir()
 {
@@ -174,12 +175,12 @@ function resgrepi()
 # Makefile
 function mgrep()
 {
-    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' \) -print0 | xargs -0 grep --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 grep --color -n "$*"
 }
 
 function mgrepi()
 {
-    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' \) -print0 | xargs -0 grep -i --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 grep -i --color -n "$*"
 }
 
 # pdf
