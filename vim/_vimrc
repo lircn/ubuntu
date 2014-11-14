@@ -285,10 +285,6 @@ imap <C-g> <ESC>bi$(<ESC>exea)
 map ]] ]}
 map [[ [{
 
-" Look up dictionary
-nmap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
-vmap ? :call VisualSelection('?')<CR><CR>
-
 " Open a fully width quickfix window at the bottom of vim
 map <F8> :botright cwindow<CR>
 

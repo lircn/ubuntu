@@ -5,27 +5,27 @@ snippet /*h
 	/*
 	 * Copyright (C) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
 	 *
-	 * Description: ${1}
+	 * Brief: ${1}
 	 *
 	 * Author: `g:snips_author`
 	 *
 	 * Changes:
-	 *       LiZheng: Create file, `strftime("%Y-%m-%d")`
+	 *  `strftime("%Y-%m-%d")`, LiZheng, Create.
 	 */
 	 ${2}
 
 snippet #h
-	#!${1}/bin/sh
+	#!/bin/sh
 	#
 	# Copyright (C) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
 	#
-	# Description: ${2}
+	# Brief: ${1}
 	#
 	# Author: `g:snips_author`
 	#
 	# Changes:
-	#       LiZheng: Create file, `strftime("%Y-%m-%d")`
-	${3}
+	#   `strftime("%Y-%m-%d")`, LiZheng, Create.
+	${2}
 
 snippet ME
 	`g:snips_author`
@@ -43,11 +43,9 @@ snippet /**
 
 snippet /*f
 	/**
-	 * ${1:/* func */}() - ${2:/* description */}
-	 * @para1: ...
-	 *
-	 * ...
+	 * @brief ${1}
 	 */
+
 snippet /*s
 	/**
 	 * ${1:/* struct */} - ${2:/* description */}
