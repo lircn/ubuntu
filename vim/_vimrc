@@ -245,6 +245,9 @@ vmap <leader>r :call VisualSelection('replace')<CR>
 " When you press gv you vimgrep after the selected text
 vmap <leader>gv :call VisualSelection('gv')<CR>
 
+" output to json format
+vmap <leader>jp:!jp<CR>
+
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
