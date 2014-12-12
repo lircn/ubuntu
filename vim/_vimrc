@@ -246,7 +246,7 @@ vmap <leader>r :call VisualSelection('replace')<CR>
 vmap <leader>gv :call VisualSelection('gv')<CR>
 
 " output to json format
-vmap <leader>jp:!jp<CR>
+vmap <leader>jp :!jp<CR>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>

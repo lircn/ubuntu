@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 OUT=`cat $1 | python -m json.tool`
 echo -en "$OUT"

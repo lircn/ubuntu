@@ -129,7 +129,7 @@ function lhanslir()
 
 function lsshlir()
 {
-    ssh -CNfg -D 127.0.0.1:1080 lir@10.50.50.1
+    ssh -CNfg -D 127.0.0.1:28888 lir@10.50.50.1
 }
 
 function xfind()
