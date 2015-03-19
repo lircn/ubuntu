@@ -115,7 +115,8 @@ fi
 
 export PATH=~/bin:~/scripts:$PATH
 
-alias adb='sudo /opt/android-sdk-linux/platform-tools/adb'
+#alias adb='sudo /opt/android-sdk-linux/platform-tools/adb'
+alias adb='sudo ~/bin/adb'
 
 function lhanslir()
 {

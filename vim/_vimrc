@@ -102,6 +102,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/DrawIt'
 Plugin 'uguu-org/vim-matrix-screensaver'
 
+" python
+Plugin 'vim-scripts/Pydiction'
+Plugin 'vim-scripts/python.vim'
+let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
+
 " Lua
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-inspect'
@@ -449,7 +454,7 @@ function! Do_CsTag()
         " execute "!ctags -R --c++-kinds=-p --fields=+iaS --extra=+q ."
     endif
     if(executable('cscope')&&has("cscope"))
-        silent! execute "!find . -name '.svn' -prune -o -name '.git' -prune -o -name '*.h' -o -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
+        silent! execute "!find . -name '.svn' -prune -o -name '.git' -prune -o -name '*.h' -o -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
     endif
     execute "!cscope -Rbq"
     execute "normal :"

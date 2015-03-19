@@ -3,7 +3,7 @@
 # (c) holds no legal value ;)
 snippet /*h
 	/*
-	 * Copyright (C) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
+	 * Copyright (c) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
 	 *
 	 * Brief: ${1}
 	 *
@@ -17,7 +17,7 @@ snippet /*h
 snippet #h
 	#!/bin/sh
 	#
-	# Copyright (C) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
+	# Copyright (c) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
 	#
 	# Brief: ${1}
 	#
@@ -61,5 +61,7 @@ snippet {
 snippet ifc
 	#ifdef __cplusplus
 	extern "C" {
+	#endif
+	#ifdef __cplusplus
 	}
 	#endif
