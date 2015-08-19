@@ -65,3 +65,13 @@ snippet ifc
 	#ifdef __cplusplus
 	}
 	#endif
+
+# Header Include-Guard
+snippet once
+	#ifndef ${1:`toupper(Filename('__$1_H__', 'UNTITLED_H'))`}
+
+	#define $1
+
+	${2}
+
+	#endif /* end of include guard: $1 */

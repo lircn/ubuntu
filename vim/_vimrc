@@ -3,6 +3,8 @@
 let mapleader = ","             " must on the top
 let g:mapleader = ","
 
+let g:clang_user_options='|| exit 0'
+
 set nocompatible                " be iMproved
 filetype off                    " required!
 
@@ -103,16 +105,16 @@ Plugin 'vim-scripts/DrawIt'
 Plugin 'uguu-org/vim-matrix-screensaver'
 
 " python
-Plugin 'vim-scripts/Pydiction'
-Plugin 'vim-scripts/python.vim'
-let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
+""Plugin 'vim-scripts/Pydiction'
+""Plugin 'vim-scripts/python.vim'
+""let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
 
 " Lua
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-lua-inspect'
+""Plugin 'xolox/vim-misc'
+""Plugin 'xolox/vim-lua-inspect'
 " Plugin 'xolox/vim-lua-ftplugin'
-let g:lua_inspect_warnings = 0
-let g:loaded_luainspect = 1
+""let g:lua_inspect_warnings = 0
+""let g:loaded_luainspect = 1
 " autocmd FileType lua setlocal completefunc=xolox#lua
 
 filetype plugin indent on     " required!
@@ -260,6 +262,7 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
 " Normal map
+nmap ` .
 
 " Move between windows
 map <C-j> <C-w>j
@@ -304,6 +307,7 @@ nmap <F12> :call Do_CsTag()<CR>
 
 " 行选择,然后:Tabularize/=则把所选行的=全部对齐
 Plugin 'godlygeek/tabular'
+map <leader>= :Tabularize/
 
 " Color
 colorscheme darkburn_lir
