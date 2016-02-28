@@ -20,3 +20,8 @@ bash $PWD/tmux/setup.sh
 
 ln -f -s $PWD/_gitconfig ~/.gitconfig
 
+#git
+git config --global i18n.commitencoding utf-8
+git config --global core.editor vim
+git config --global color.ui true
+git config --global help.format html

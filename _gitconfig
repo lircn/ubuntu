@@ -8,7 +8,9 @@
     s = status
     d = diff
 [core]
-    editor = vim
+	editor = vim
 [user]
 	name = Li Zheng
 	email = lizheng_w5625@tp-link.net
+[i18n]
+	commitEncoding = utf-8
