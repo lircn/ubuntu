@@ -318,6 +318,7 @@ syntax enable
 " 括号和引号补全
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
+inoremap { {<Esc>o}<Esc>O
 
 " inoremap ) <c-r>=ClosePair(')')<CR>
 " inoremap ] <C-r>=ClosePair(']')<CR>
