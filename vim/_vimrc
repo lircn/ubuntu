@@ -185,8 +185,8 @@ set list
 " Tabs
 set softtabstop=4
 
-" set expandtab		" Use space to replace tab, can usb <C-V><Tab> to insert a real tab
-set noexpandtab       " replace tab to space. use <C-V><Tab> to insert a real tab.
+set expandtab       " Use space to replace tab, can usb <C-V><Tab> to insert a real tab
+" set noexpandtab   " replace tab to space. use <C-V><Tab> to insert a real tab.
 set tabstop=4       " show tab indent word space.
 set shiftwidth=4    " tab length
 
@@ -218,11 +218,9 @@ set smartcase
 " Powerline
 Plugin 'Lokaltog/vim-powerline'
 set t_Co=256
-set rtp+=/home/lizheng/.vim/bundle/powerline/powerline/bindings/vim
 set guifont=PowerlineSymbols\ for\ Powerline
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
-let Powerline_symbols='compatible'
 
 " persistent undo
 set undofile
