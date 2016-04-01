@@ -77,4 +77,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias -s c=vim
+alias -s h=vim
+alias -s zsh=vim
+
+export DISABLE_UNTRACKED_FILES_DIRTY=true
 setopt HIST_IGNORE_DUPS
