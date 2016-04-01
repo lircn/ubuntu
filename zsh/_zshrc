@@ -80,6 +80,9 @@ alias l='ls -CF'
 alias -s c=vim
 alias -s h=vim
 alias -s zsh=vim
+alias -s txt=vim
+alias -s py=vim
+alias -s html=vim
 
 export DISABLE_UNTRACKED_FILES_DIRTY=true
 setopt HIST_IGNORE_DUPS
