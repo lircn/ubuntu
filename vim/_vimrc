@@ -234,6 +234,7 @@ map <leader>a A
 map <leader>q :qa!<CR>
 
 " Copy to CLIPBOARD, and use 'y' to copy to the PRIMARY
+" vim-gnome
 map <leader>y "+y
 map <leader>p "+p
 

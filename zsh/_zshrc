@@ -2,7 +2,7 @@
 # 2016-04-01
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/lizheng/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="lir"
 
