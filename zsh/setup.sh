@@ -2,11 +2,12 @@
 
 P=`readlink -f $(dirname $0)`
 
+#sodu apt-get install zsh
+#sodu apt-get install autojump
+#chsh -s /bin/zsh
+
 if [[ ! -d ~/.oh-my-zsh ]]; then
-    sodu apt-get install zsh
-    sodu apt-get install autojump
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-    chsh -s /bin/zsh
 fi
 
 ln -f -s $P/lir.zsh-theme ~/.oh-my-zsh/themes/lir.zsh-theme
