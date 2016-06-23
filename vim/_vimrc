@@ -75,7 +75,9 @@ map <silent> <leader>sc :SyntasticCheck<CR>
 map <silent> <leader>sr :SyntasticReset<CR>
 
 " Snippet
-Plugin 'msanders/snipmate.vim.git'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 let g:snips_author = 'Li Zheng <lizheng_w5625@tp-link.net>'
 
 " Git
