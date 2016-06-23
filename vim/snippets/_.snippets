@@ -323,7 +323,13 @@ snippet /*h
 	 * Changes:
 	 *  `strftime("%Y-%m-%d")`, LiZheng, Create.
 	 */
-	 ${2}
+
+snippet /*hs
+	/*
+	 * Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` LiR <6007381@qq.com>. All Rights Reserved.
+	 *
+	 * Brief: ${1}
+	 */
 
 snippet #h
 	#!/bin/sh
@@ -336,4 +342,3 @@ snippet #h
 	#
 	# Changes:
 	#   `strftime("%Y-%m-%d")`, LiZheng, Create.
-	${2}
