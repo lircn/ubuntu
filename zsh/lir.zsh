@@ -28,43 +28,43 @@ function xfindi()
 
 function jgrep()
 {
-    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 ag "$*"
 }
 
 function jgrepi()
 {
-    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep -i --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 ag -i "$*"
 }
 
 function cgrep()
 {
-    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 ag "$*"
 }
 
 function cgrepi()
 {
-    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep -i --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 ag -i "$*"
 }
 
 function resgrep()
 {
-    for dir in `find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep --color -n "$*"; done;
+    for dir in `find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 ag "$*"; done;
 }
 
 function resgrepi()
 {
-    for dir in `find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep -i --color -n "$*"; done;
+    for dir in `find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 ag -i "$*"; done;
 }
 
 # Makefile
 function mgrep()
 {
-    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 grep --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 ag "$*"
 }
 
 function mgrepi()
 {
-    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 grep -i --color -n "$*"
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 ag -i "$*"
 }
 
 # pdf
@@ -80,10 +80,10 @@ function pgrepi()
 
 function xgrep()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 grep --color -n "$*"
+    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 ag "$*"
 }
 
 function xgrepi()
 {
-	find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 grep -i --color -n "$*"
+	find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 ag -i "$*"
 }
