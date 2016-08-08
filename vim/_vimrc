@@ -1,15 +1,16 @@
-" by Li zheng
+" by Li zheng <6007381@qq.com>
 
-let mapleader = ","             " must on the top
-let g:mapleader = ","
-
-let g:clang_user_options='|| exit 0'
+let mapleader = "\<SPACE>"             " must on the top
+let g:mapleader = "\<SPACE>"
 
 set nocompatible                " be iMproved
 filetype off                    " required!
 
+" Fix ml_get error
+let g:netrw_use_noswf= 0
+
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -17,8 +18,19 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_strings=1
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
 " Tags
-Plugin 'majutsushi/tagbar.git'
+Plugin 'majutsushi/tagbar'
 map <silent> <F2> :TagbarToggle<CR>
 let g:tagbar_left = 1
 let g:tagbar_width = 30
@@ -27,7 +39,6 @@ let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_map_zoomwin = "z"
 let g:tagbar_map_togglefold = "x"
 let g:tagbar_map_jump = "o""
-
 
 " NERDTree
 Plugin 'scrooloose/nerdtree.git'
@@ -40,13 +51,16 @@ let NERDTreeShowBookmarks=1
 let NERDTreeWinPos='right'
 let NERDTreeWinSize=45
 let NERDTreeShowLineNumbers=0
-let NERDTreeIgnore=['cscope.in.out', 'cscope.out', 'cscope.files', 'cscope.po.out', 'tags', '\.swp$']
+let NERDTreeIgnore=['cscope.in.out', 'cscope.out', 'cscope.files', 'cscope.po.out', 'tags', '\.swp$', '\.git$', '\.svn$']
 let NERDTreeMapToggleZoom='z'
 let NERDTreeMinimalUI=1
+
 
 " L9
 Plugin 'vim-scripts/L9'
 
+
+" ctrlp
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map= '<C-p>'
 let g:ctrlp_cmd = 'CtrlPMRU'
@@ -62,23 +76,28 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\v\.(exe|so|dll)$',
 \ }
 
-" I have no idea
-"
-" " Grep
-" "Plugin 'rking/ag.vim'
+
+" Grep
+Plugin 'rking/ag.vim'
+let g:ackprg = 'ag --vimgrep'
+
 
 " Syntax checker
 Plugin 'scrooloose/syntastic.git'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_cpp_include_dirs = ['/usr/include/']
 map <silent> <leader>sc :SyntasticCheck<CR>
 map <silent> <leader>sr :SyntasticReset<CR>
 
 " Snippet
+Plugin 'SirVer/ultisnips'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snipmate'
 let g:snips_author = 'Li Zheng <lizheng_w5625@tp-link.net>'
+let g:UltiSnipsExpandTrigger="<\>"
 
 " Git
 Plugin 'tpope/vim-fugitive.git'
@@ -91,7 +110,7 @@ let g:EasyMotion_mapping_f = ''
 let g:EasyMotion_mapping_F = ''
 let g:EasyMotion_mapping_t = ''
 let g:EasyMotion_mapping_T = ''
-let g:EasyMotion_mapping_W = '<Leader>w'
+let g:EasyMotion_mapping_W = ''
 let g:EasyMotion_mapping_B = ''
 let g:EasyMotion_mapping_e = ''
 let g:EasyMotion_mapping_E = ''
@@ -217,12 +236,30 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" Powerline
-Plugin 'Lokaltog/vim-powerline'
-set t_Co=256
-set guifont=PowerlineSymbols\ for\ Powerline
+" Powerline, airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 set laststatus=2
-let g:Powerline_symbols = 'fancy'
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+" Top 2:
+" badwolf
+" dark
+let g:airline_theme = "badwolf"
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#symbol = '!'
 
 " persistent undo
 set undofile
@@ -234,6 +271,11 @@ map <leader>ee :e ~/.vimrc<CR>
 map <leader><CR> :noh<CR>
 map <leader>a A
 map <leader>q :qa!<CR>
+
+" vim-expand-region
+Plugin 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " Copy to CLIPBOARD, and use 'y' to copy to the PRIMARY
 " vim-gnome
@@ -312,6 +354,7 @@ map <leader>= :Tabularize/
 
 " Color
 colorscheme darkburn_lir
+set t_Co=256
 
 " 81 notice
 syntax enable
@@ -329,45 +372,6 @@ inoremap ' <C-r>=QuoteDelim("'")<CR>
 
 " highlight
 set mps+=<:>
-
-
-
-"""""""""""""""""NeoComplCache"""""""""""""""
-Plugin 'Shougo/neocomplcache'
-
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" use smartcase
-let g:neocomplcache_enable_smart_case = 1
-" use camel case completion
-let g:neocomplcache_enable_camel_case_completion = 1
-" use underbar completion
-let g:neocomplcache_enable_underbar_completion = 1
-" set minimum syntax keyword length
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" AutoComplPop like behavior
-let g:neocomplcache_enable_auto_select = 0
-
-" when you input 'ho-a', ncc will select candidate 'a'
-let g:neocomplcache_enable_quick_match = 1
-" define dictionary
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions',
-    \ 'css' : $VIMFILES.'/dict/css.dic',
-    \ 'php' : $VIMFILES.'/dict/php.dic',
-    \ 'javascript' : $VIMFILES.'/dict/javascript.dic'
-    \ }
-let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
-
-inoremap <expr><space> pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
-
-
 
 
 

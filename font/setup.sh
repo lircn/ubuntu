@@ -1,8 +1,11 @@
 #!/bin/bash
 
+FONT_PATH="/tmp/vim_font/"
 sudo apt-get install python-fontforge
-tar -jxf ./ubuntu-font-family.tar.bz2
-~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ./ubuntu-font-family/UbuntuMono-R.ttf
-mkdir ~/.fonts
-mv ./UbuntuMono-R-Powerline.ttf ~/.fonts/
-fc-cache -vf ~/.fonts
+
+mkdir $FONT_PATH
+cd $FONT_PATH
+git clone https://github.com/powerline/fonts
+$FONT_PATH/fonts/install.sh
+
+fc-cache -vf ~/.local/share/fonts/
