@@ -16,7 +16,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
@@ -34,7 +34,6 @@ Plugin 'majutsushi/tagbar'
 map <silent> <F2> :TagbarToggle<CR>
 let g:tagbar_left = 1
 let g:tagbar_width = 30
-let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_map_zoomwin = "z"
 let g:tagbar_map_togglefold = "x"
@@ -97,7 +96,28 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snipmate'
 let g:snips_author = 'Li Zheng <lizheng_w5625@tp-link.net>'
-let g:UltiSnipsExpandTrigger="<\>"
+let g:UltiSnipsSnippetsDir = '~/.vim/snippets'
+let g:UltiSnipsUsePythonVersion = 2
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
 
 " Git
 Plugin 'tpope/vim-fugitive.git'
@@ -308,10 +328,10 @@ map <leader>tm :tabmove
 nmap ` .
 
 " Move between windows
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
 
 " replaced by <C-c>
 nmap - ^

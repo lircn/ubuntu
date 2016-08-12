@@ -1,5 +1,5 @@
 [color]
-    ui = always
+	ui = true
 [diff]
     tool = vimdiff
 [difftool]
@@ -13,4 +13,6 @@
 	name = Li Zheng
 	email = lizheng_w5625@tp-link.net
 [i18n]
-	commitEncoding = utf-8
+	commitencoding = utf-8
+[help]
+	format = html

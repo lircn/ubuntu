@@ -16,7 +16,7 @@ ln -f -s $PWD/scripts ~/
 bash $PWD/vim/setup.sh
 
 # bundle
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 
 # tmux & powerline
 bash $PWD/tmux/setup.sh

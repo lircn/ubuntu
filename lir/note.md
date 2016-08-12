@@ -18,7 +18,8 @@ Setup YCM (https://github.com/Valloric/YouCompleteMe)
 [root@localhost bundle]# git clone https://github.com/Valloric/YouCompleteMe
 [root@localhost YouCompleteMe]# git submodule update --init --recursive  #这步必须要有
 
-cmake -G "Unix Makefiles" -DEXTERNAL_LIBCLANG_PATH=/usr/lib/llvm-3.6/lib/libclang.so . /home/lizheng/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+cmake -G "Unix Makefiles" . /home/lizheng/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+cmake --build . --target ycm_core
 需要执行 install.py
 
 ## ag
