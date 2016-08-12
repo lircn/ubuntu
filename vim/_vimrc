@@ -60,7 +60,7 @@ Plugin 'vim-scripts/L9'
 
 
 " ctrlp
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map= '<C-p>'
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_lazy_update = 1
