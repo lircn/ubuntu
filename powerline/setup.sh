@@ -1,17 +1,14 @@
 #!/bin/bash
 
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+GIT_PATH="~/git/"
+mkdir -p $GIT_PATH
+
+cd $GIT_PATH
+git clone https://github.com/powerline/powerline.git
 
 mkdir -p ~/.fonts/
-mv PowerlineSymbols.otf ~/.fonts/
-
+cp $GIT_PATH/powerline/font/PowerlineSymbols.otf ~/.fonts/
 fc-cache -vf ~/.fonts/
 
 mkdir -p  ~/.config/fontconfig/conf.d/
-mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-
-POWERLINE_PATH="~/git/powerline/"
-mkdir -p $POWERLINE_PATH
-cd $POWERLINE_PATH
-git clone https://github.com/powerline/powerline.git
+cp $GIT_PATH/powerline/font/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/

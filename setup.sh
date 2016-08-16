@@ -12,18 +12,20 @@ echo "=== DONE! ==="
 # scripts
 ln -f -s $PWD/scripts ~/
 
+# powerline
+bash $PWD/powerline/setup.sh
+
 # vim
 bash $PWD/vim/setup.sh
 
 # bundle
 git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 
-# tmux & powerline
+# tmux
 bash $PWD/tmux/setup.sh
 
-ln -f -s $PWD/_gitconfig ~/.gitconfig
-
 #git
+ln -f -s $PWD/_gitconfig ~/.gitconfig
 git config --global i18n.commitencoding utf-8
 git config --global core.editor vim
 git config --global color.ui true
