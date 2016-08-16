@@ -1,7 +1,0 @@
-#!/bin/sh
-# Copyright (C), 2013, TP-LINK TECHNOLOGIES CO., LTD.
-# Author: Li Zheng <lizheng_w5625@tp-link.net>
-# Date:   2013-11-06
-
-source /home/lizheng/work/tr781/build/envsetup.sh
-choosecombo 2 tr781 3
