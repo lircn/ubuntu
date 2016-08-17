@@ -4,6 +4,7 @@ GIT_PATH="~/git/"
 mkdir -p $GIT_PATH
 
 cd $GIT_PATH
+rm ./powerline -rf
 git clone https://github.com/powerline/powerline.git
 
 mkdir -p ~/.fonts/
