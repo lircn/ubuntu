@@ -237,7 +237,7 @@ set fileencodings=ucs-bom,utf-8,chinese
 
 set fileformats=unix,dos
 set autoindent
-set showmode
+set noshowmode
 set showcmd
 set foldlevel=50
 set autoread
@@ -258,6 +258,7 @@ set smartcase
 " Powerline, airline
 set rtp+=~/git/powerline/powerline/bindings/vim
 set laststatus=2
+set showtabline=2
 ""set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
 """ Top 2:
 """ badwolf
