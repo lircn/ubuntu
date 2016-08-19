@@ -1,0 +1,67 @@
+# Global snippets
+# Addde by LiR
+
+priority -60
+
+snippet def "#define ..."
+#define ${1}
+endsnippet
+
+snippet /* "/* ... */"
+/* ${1} */
+endsnippet
+
+snippet /** "/** ... **/"
+/*
+ * ${1}
+ */
+endsnippet
+
+snippet /*f "/** function ... **/"
+/**
+ * @brief ${1}
+ */
+endsnippet
+
+snippet ifc
+#ifdef __cplusplus
+extern "C" {
+#endif
+#ifdef __cplusplus
+}
+#endif
+endsnippet
+
+snippet /*h
+/*
+ * Copyright (c) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
+ *
+ * Brief: ${1}
+ *
+ * Author: `g:snips_author`
+ *
+ * Changes:
+ *  `strftime("%Y-%m-%d")`, LiZheng, Create.
+ */
+endsnippet
+
+snippet /*hs
+/*
+ * Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` LiR <6007381@qq.com>. All Rights Reserved.
+ *
+ * Brief: ${1}
+ */
+endsnippet
+
+snippet #h
+#!/bin/sh
+#
+# Copyright (c) `strftime("%Y")`, TP-LINK TECHNOLOGIES CO., LTD.
+#
+# Brief: ${1}
+#
+# Author: `g:snips_author`
+#
+# Changes:
+#   `strftime("%Y-%m-%d")`, LiZheng, Create.
+endsnippet
