@@ -113,7 +113,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH=~/bin:~/scripts:$PATH
+PATH="$HOME/bin:$HOME/scripts:$PATH"
+export PATH
 
 #alias adb='sudo /opt/android-sdk-linux/platform-tools/adb'
 alias adb='sudo ~/bin/adb'

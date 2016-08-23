@@ -49,7 +49,8 @@ plugins=(git autojump)
 
 # User configuration
 
-export PATH="~/bin:~/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+PATH="$HOME/bin:$HOME/scripts:$PATH"
+export PATH
 
 source $ZSH/oh-my-zsh.sh
 
