@@ -1,15 +1,19 @@
 #!/bin/bash
 
-GIT_PATH="~/git/"
+GIT_PATH="$HOME/git"
 mkdir -p $GIT_PATH
 
 cd $GIT_PATH
-rm ./powerline -rf
-git clone https://github.com/powerline/powerline.git
+echo -n "Download Powerline? (y/n)"
+read IN
+if [ "$IN" = "y" ] || [ "$IN" = "Y" ]; then
+    rm ./powerline -rf
+    git clone https://github.com/powerline/powerline.git
+fi
 
-mkdir -p ~/.fonts/
-cp $GIT_PATH/powerline/font/PowerlineSymbols.otf ~/.fonts/
-fc-cache -vf ~/.fonts/
+mkdir -p $HOME/.fonts/
+cp $GIT_PATH/powerline/font/PowerlineSymbols.otf $HOME/.fonts/
+fc-cache -vf $HOME/.fonts/
 
-mkdir -p  ~/.config/fontconfig/conf.d/
-cp $GIT_PATH/powerline/font/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+mkdir -p  $HOME/.config/fontconfig/conf.d/
+cp $GIT_PATH/powerline/font/10-powerline-symbols.conf $HOME/.config/fontconfig/conf.d/

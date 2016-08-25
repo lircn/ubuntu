@@ -67,6 +67,7 @@ let g:ctrlp_custom_ignore = {
 
 " Grep
 Plugin 'rking/ag.vim'
+let g:ag_prg="ag --vimgrep --smart-case"
 let g:ackprg = 'ag --vimgrep'
 nmap <leader><F6> :Ag <C-R>=expand("<cword>")<CR><CR>
 

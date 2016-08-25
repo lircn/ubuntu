@@ -6,16 +6,16 @@ P=`readlink -f $(dirname $0)`
 echo -n "Backup your original vim files? (y/n)"
 read IN
 if [ "$IN" = "y" ] || [ "$IN" = "Y" ]; then
-    rm -rf ~/.vim_backup; mv -f ~/.vim ~/.vim_backup
-    rm -f ~/.vimrc_backup; mv -f ~/.vimrc ~/.vimrc_backup
+    rm -rf $HOME/.vim_backup; mv -f $HOME/.vim $HOME/.vim_backup
+    rm -f $HOME/.vimrc_backup; mv -f $HOME/.vimrc $HOME/.vimrc_backup
 fi
 
-rm -rf ~/.vim
-rm -f ~/.vimrc
+rm -rf $HOME/.vim
+rm -f $HOME/.vimrc
 
 # vim files
-ln -sd $P ~/.vim
-ln -s $P/_vimrc ~/.vimrc
+ln -sd $P $HOME/.vim
+ln -s $P/_vimrc $HOME/.vimrc
 
 echo "=== DONE! ==="
 
