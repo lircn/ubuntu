@@ -27,6 +27,7 @@ let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_map_zoomwin = "z"
 let g:tagbar_map_togglefold = "x"
 let g:tagbar_map_jump = "o""
+let g:tagbar_autofocus = 1
 
 " NERDTree
 Plugin 'scrooloose/nerdtree.git'
@@ -69,7 +70,7 @@ let g:ctrlp_custom_ignore = {
 Plugin 'rking/ag.vim'
 let g:ag_prg="ag --vimgrep --smart-case"
 let g:ackprg = 'ag --vimgrep'
-nmap <leader><F6> :Ag <C-R>=expand("<cword>")<CR><CR>
+map <leader><F6> :Ag <C-R>=expand("<cword>")<CR><CR>
 
 
 " Syntax checker
