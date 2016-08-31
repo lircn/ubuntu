@@ -18,12 +18,12 @@ function lsshlir()
 
 function xfind()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*$**" -print
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*$**" -print
 }
 
 function xfindi()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -iname "*$**" -print
+    find . -name .repo -prune -o -name .git -prune -o  -type f -iname "*$**" -print
 }
 
 function jgrep()
