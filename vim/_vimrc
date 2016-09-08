@@ -115,10 +115,11 @@ endfunction
 
 " YouCompleteMe YCM
 Plugin 'Valloric/YouCompleteMe'
-let g:ycm_min_num_of_chars_for_completion=2
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments=1
-let g:ycm_complete_in_strings=1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
