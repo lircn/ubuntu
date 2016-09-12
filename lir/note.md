@@ -39,6 +39,10 @@ gv   to open in vertical split silently
 q    to close the quickfix window))
 
 
+# tmux
+
+Hit prefix + I to fetch the plugin and source it. The plugin will automatically start "working" in the background, no action required.
+
 # hans
     git clone http://github.com/hh123okbb/hans
     /hans$ make
