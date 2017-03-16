@@ -145,10 +145,12 @@ let g:EasyMotion_mapping_j = '<Leader>j'
 let g:EasyMotion_mapping_k = ''
 let g:EasyMotion_mapping_n = ''
 let g:EasyMotion_mapping_N = ''
-Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/DrawIt'
 Plugin 'uguu-org/vim-matrix-screensaver'
+
+" Markdown
+Plugin 'plasticboy/vim-markdown'
 
 " python
 ""Plugin 'vim-scripts/Pydiction'
