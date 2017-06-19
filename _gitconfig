@@ -10,9 +10,11 @@
 [core]
 	editor = vim
 [user]
-	name = Li Zheng
-	email = lizheng_w5625@tp-link.com.cn
+	name = zaynli
+	email = zaynli@tencent.com
 [i18n]
 	commitencoding = utf-8
 [help]
 	format = html
+[merge]
+	tool = vimdiff
