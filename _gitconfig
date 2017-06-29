@@ -18,3 +18,5 @@
 	format = html
 [merge]
 	tool = vimdiff
+[credential]
+	helper = cache
