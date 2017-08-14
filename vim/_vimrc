@@ -363,7 +363,14 @@ nmap <F12> :call Do_CsTag()<CR>
 
 " 行选择,然后:Tabularize/=则把所选行的=全部对齐
 Plugin 'godlygeek/tabular'
-map <leader>= :Tabularize/
+vmap <leader>= :Tabularize/
+
+" format for js
+Plugin 'maksimr/vim-jsbeautify'
+""map <leader>JSB :'<,'>!js-beautify -i<CR>
+autocmd FileType javascript noremap <buffer>  <leader>JSB :call JsBeautify()<CR>
+autocmd FileType html noremap <buffer> <leader>htmlb :call HtmlBeautify()<CR>
+autocmd FileType css noremap <buffer> <leader>cssb :call CSSBeautify()<CR>
 
 " Color
 colorscheme darkburn_lir
