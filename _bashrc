@@ -119,7 +119,8 @@ export PATH
 #alias adb='sudo /opt/android-sdk-linux/platform-tools/adb'
 alias adb='sudo ~/bin/adb'
 
-export http_proxy='dev-proxy.oa.com:8080'
+export http_proxy='http://dev-proxy.oa.com:8080'
+export https_proxy='http://dev-proxy.oa.com:8080'
 
 function lhanslir()
 {
