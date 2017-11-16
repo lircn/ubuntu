@@ -2,7 +2,7 @@
 # vim
 # setup
 
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 配置unbuntu全局编辑器
     export EDITOR = vim
@@ -16,6 +16,7 @@
 Setup YCM (https://github.com/Valloric/YouCompleteMe)
 
 [root@localhost bundle]# git clone https://github.com/Valloric/YouCompleteMe
+
 [root@localhost YouCompleteMe]# git submodule update --init --recursive  #这步必须要有
 
 read the doc
