@@ -91,3 +91,5 @@ export POWERLINE_CONFIG_COMMAND=$HOME/git/powerline/scripts/powerline-config
 #export http_proxy='dev-proxy.oa.com:8080'
 #export https_proxy='dev-proxy.oa.com:8080'
 export no_proxy=localhost,.oa.com,.qq.com,127.0.0.1,
+
+ulimit -c unlimited
