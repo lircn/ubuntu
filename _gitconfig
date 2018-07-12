@@ -20,3 +20,5 @@
 	tool = vimdiff
 [credential]
 	helper = cache
+[https]
+	proxy = dev-proxy.oa.com:8080

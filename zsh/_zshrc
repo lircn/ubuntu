@@ -1,8 +1,10 @@
 # Li Zheng <6007381@qq.com>
 # 2016-04-01
 
-# Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+
+# ignore complition
+zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
 
 ZSH_THEME="lir"
 
@@ -48,9 +50,14 @@ ZSH_THEME="lir"
 plugins=(autojump)
 
 # User configuration
+# 
+MAVEN_HOME=/usr/local/apache-maven-3.5.2
+export MAVEN_HOME
 
-PATH="$HOME/bin:$HOME/scripts:$PATH"
+PATH="$HOME/bin:$HOME/scripts:$PATH:${MAVEN_HOME}/bin"
 export PATH
+
+export NDK="/home/zaynli/work/Android/android-ndk-r17"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,8 +95,9 @@ export DISABLE_UNTRACKED_FILES_DIRTY=true
 setopt HIST_IGNORE_DUPS
 export POWERLINE_CONFIG_COMMAND=$HOME/git/powerline/scripts/powerline-config
 
-#export http_proxy='dev-proxy.oa.com:8080'
-#export https_proxy='dev-proxy.oa.com:8080'
-export no_proxy=localhost,.oa.com,.qq.com,127.0.0.1,
+export http_proxy='dev-proxy.oa.com:8080'
+export https_proxy='dev-proxy.oa.com:8080'
+export no_proxy=localhost,.oa.com,.qq.com,127.0.0.1,113.105.141.27,112.230.155.217,120.78.224.133,10.188.2.246,192.168.8.*,192.168.1.200
 
 ulimit -c unlimited
+
