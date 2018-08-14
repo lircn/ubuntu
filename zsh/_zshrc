@@ -101,3 +101,90 @@ export no_proxy=localhost,.oa.com,.qq.com,127.0.0.1,113.105.141.27,112.230.155.2
 
 ulimit -c unlimited
 
+
+function lhanslir()
+{
+    if [[ $# -ge 1 ]]; then
+        mtu=$1
+    else
+        mtu=1400
+    fi
+    sudo ~/work/hans/hans -c 106.186.28.188 -p lirlir -n lirlir -m $mtu
+}
+
+function lsshlir()
+{
+    ssh -CNfg -D 127.0.0.1:28888 lir@10.50.50.1
+}
+
+function xfind()
+{
+    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*$**" -print
+}
+
+function xfindi()
+{
+    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -iname "*$**" -print
+}
+
+function jgrep()
+{
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0  grep "$*"
+}
+
+function jgrepi()
+{
+    find . -name .repo -prune -o -name .git -prune -o  -type f -name "*\.java" -print0 | xargs -0 grep -i "$*"
+}
+
+function cgrep()
+{
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep "$*"
+}
+
+function cgrepi()
+{
+    find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep -i "$*"
+}
+
+function resgrep()
+{
+    for dir in `find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep "$*"; done;
+}
+
+function resgrepi()
+{
+    for dir in `find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep -i "$*"; done;
+}
+
+# Makefile
+function mgrep()
+{
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 grep "$*"
+}
+
+function mgrepi()
+{
+    find . -name .repo -prune -o -name .git -prune -o  -type f \( -name "Makefile" -o -name '*.mk' -o -name '*.cmake' \) -print0 | xargs -0 grep -i "$*"
+}
+
+# pdf
+function pgrep()
+{
+    find . -name '*.pdf' -print -exec pdftotext {} /tmp/tmp.txt \; -exec grep --color "$*" /tmp/tmp.txt \;
+}
+
+function pgrepi()
+{
+    find . -name '*.pdf' -print -exec pdftotext {} /tmp/tmp.txt \; -exec grep -i --color "$*" /tmp/tmp.txt \;
+}
+
+function xgrep()
+{
+    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 grep "$*"
+}
+
+function xgrepi()
+{
+	find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 grep -i "$*"
+}
