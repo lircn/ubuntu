@@ -54,8 +54,16 @@ plugins=(autojump)
 MAVEN_HOME=/usr/local/apache-maven-3.5.2
 export MAVEN_HOME
 
-PATH="$HOME/bin:$HOME/scripts:$PATH:${MAVEN_HOME}/bin"
+# go
+GOPATH="$HOME/go"
+export GOPATH
+
+GOBIN="$HOME/go/bin"
+export GOBIN
+
+PATH="$HOME/bin:$HOME/scripts:$PATH:${MAVEN_HOME}/bin:$GOBIN:/usr/local/go/bin"
 export PATH
+
 
 export NDK="/home/zaynli/work/Android/android-ndk-r17"
 

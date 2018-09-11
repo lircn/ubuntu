@@ -18,6 +18,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" support go
+Plugin 'fatih/vim-go'
+
+" support vue
+Plugin 'posva/vim-vue'
+au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
+
 " Tags
 Plugin 'majutsushi/tagbar'
 map <silent> <F2> :TagbarToggle<CR>
