@@ -54,6 +54,8 @@ plugins=(autojump)
 MAVEN_HOME=/usr/local/apache-maven-3.5.2
 export MAVEN_HOME
 
+. /Library/Python/2.7/site-packages/powerline/bindings/bash/powerline.sh
+
 # go
 GOPATH="$HOME/go"
 export GOPATH
@@ -88,6 +90,10 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias relay1='ssh lizheng05@relay01.kuaishou.com'
+alias relay2='ssh lizheng05@relay02.kuaishou.com'
+
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -102,10 +108,6 @@ alias -s html=vim
 export DISABLE_UNTRACKED_FILES_DIRTY=true
 setopt HIST_IGNORE_DUPS
 export POWERLINE_CONFIG_COMMAND=$HOME/git/powerline/scripts/powerline-config
-
-export http_proxy='dev-proxy.oa.com:8080'
-export https_proxy='dev-proxy.oa.com:8080'
-export no_proxy=localhost,.oa.com,.qq.com,127.0.0.1,113.105.141.27,112.230.155.217,120.78.224.133,10.188.2.246,192.168.8.*,192.168.1.200
 
 ulimit -c unlimited
 

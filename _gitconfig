@@ -10,8 +10,8 @@
 [core]
 	editor = vim
 [user]
-	name = zaynli
-	email = zaynli@tencent.com
+	name = lir
+	email = 6007381@qq.com
 [i18n]
 	commitencoding = utf-8
 [help]
@@ -20,5 +20,3 @@
 	tool = vimdiff
 [credential]
 	helper = cache
-[https]
-	proxy = dev-proxy.oa.com:8080

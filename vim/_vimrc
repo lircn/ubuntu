@@ -170,7 +170,7 @@ filetype plugin indent on     " required!
 
 " Cscope
 if has("cscope")
-    set csto=1
+    set csto=0
     set cst
     set nocsverb
     if filereadable("cscope.out")
@@ -373,8 +373,8 @@ autocmd FileType html noremap <buffer> <leader>htmlb :call HtmlBeautify()<CR>
 autocmd FileType css noremap <buffer> <leader>cssb :call CSSBeautify()<CR>
 
 " Color
-colorscheme darkburn_lir
 set t_Co=256
+colorscheme darkburn_lir
 
 " 81 notice
 syntax enable
@@ -480,7 +480,7 @@ function! Do_CsTag()
         endif
     endif
     if(executable('ctags'))
-        silent! execute "!ctags -R --c-kinds=+p --fields=+S *"
+        silent! execute "!ctags --c-kinds=+p --fields=+S *"
         " execute "!ctags -R --c++-kinds=-p --fields=+iaS --extra=+q ."
     endif
     if(executable('cscope')&&has("cscope"))
