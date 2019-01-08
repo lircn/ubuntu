@@ -92,7 +92,7 @@ fi
 
 alias relay1='ssh lizheng05@relay01.kuaishou.com'
 alias relay2='ssh lizheng05@relay02.kuaishou.com'
-
+alias sshdev='ssh lizheng05@dev8.corp.kuaishou.com'
 
 # some more ls aliases
 alias ll='ls -alF'

@@ -267,7 +267,7 @@ set smartcase
 set rtp+=~/git/powerline/powerline/bindings/vim
 set laststatus=2
 set showtabline=2
-""set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
 """ Top 2:
 """ badwolf
 """ dark
@@ -341,7 +341,7 @@ map <F6> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
 vnoremap <F6> :call VisualSelection('f')<CR>
 
 " Look up dictionary, cover IndexedSearch's map
-autocmd! VimEnter * :nnoremap ? :!sdcv <C-R>=expand("<cword>")<CR><CR>
+nmap ? :call Dict()<CR>
 vmap ? :call VisualSelection('?')<CR><CR>
 
 " Auto convert a word to a $(shell variable
@@ -423,6 +423,18 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
+endfunction
+
+function! Dict()
+  let expl=system('sdcv -n ' .
+        \  expand("<cword>"))
+  windo if
+        \ expand("%")=="diCt-tmp" |
+        \ q!|endif
+  rightbelow 30vsp diCt-tmp
+  setlocal buftype=nofile bufhidden=hide noswapfile
+  1s/^/\=expl/
+  1
 endfunction
 
 function! VisualSelection(direction) range
