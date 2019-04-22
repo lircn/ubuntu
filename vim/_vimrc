@@ -18,7 +18,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" support go
+" support golang
 Plugin 'fatih/vim-go'
 
 " support vue
@@ -35,6 +35,33 @@ let g:tagbar_map_zoomwin = "z"
 let g:tagbar_map_togglefold = "x"
 let g:tagbar_map_jump = "o""
 let g:tagbar_autofocus = 1
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 " NERDTree
 Plugin 'scrooloose/nerdtree.git'
@@ -338,11 +365,13 @@ noremap Q q
 map <F6> /\C\<<C-R>=expand("<cword>")<CR>\><CR>N
 
 " Highlighting all the same string according to current selection
+""vnoremap <silent><F6> :call VisualSelection('f')<CR>
 vnoremap <F6> :call VisualSelection('f')<CR>
 
 " Look up dictionary, cover IndexedSearch's map
 nmap ? :call Dict()<CR>
-vmap ? :call VisualSelection('?')<CR><CR>
+vnoremap ? :call VisualSelection('?')<CR>
+
 
 " Auto convert a word to a $(shell variable
 imap <C-h> <ESC>bi${<ESC>exea}
@@ -438,26 +467,32 @@ function! Dict()
 endfunction
 
 function! VisualSelection(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+	let l:saved_reg = @"
+	execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+	let l:pattern = escape(@", '\\/.*$^~[]')
+	call CmdLine("!echo " . l:pattern)
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    elseif a:direction == '?'
-        call CmdLine("!sdcv " . l:pattern)
-    endif
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+	call CmdLine("!echo " . l:pattern)
+
+	if a:direction == 'b'
+		execute "normal ?" . l:pattern . "^M"
+	elseif a:direction == 'gv'
+		call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+	elseif a:direction == 'replace'
+		call CmdLine("%s" . '/'. l:pattern . '/')
+	elseif a:direction == 'f'
+		call CmdLine("!echo " . l:pattern)
+		execute "normal /" . l:pattern . "^M"
+	elseif a:direction == '?'
+		call CmdLine("!echo " . l:pattern)
+		call CmdLine("!sdcv " . l:pattern)
+	endif
+
+	let @/ = l:pattern
+	let @" = l:saved_reg
 endfunction
 
 function! GetCwd()
