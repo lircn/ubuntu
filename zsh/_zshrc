@@ -1,5 +1,5 @@
 # Li Zheng <6007381@qq.com>
-# 2016-04-01
+
 
 export ZSH=~/.oh-my-zsh
 
@@ -92,12 +92,18 @@ fi
 
 alias relay1='ssh lizheng05@relay01.kuaishou.com'
 alias relay2='ssh lizheng05@relay02.kuaishou.com'
+alias relay3='ssh lizheng05@relay03.kuaishou.com'
+alias relay4='ssh lizheng05@relay04.kuaishou.com'
 alias sshdev='ssh lizheng05@dev8.corp.kuaishou.com'
+
+alias go_build_linux='CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build'
+alias go_build_windows='CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build'
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias vi='vim'
 
 alias -s c=vim
 alias -s h=vim
@@ -191,7 +197,7 @@ function pgrepi()
 
 function xgrep()
 {
-    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 grep "$*"
+    find . -name tags -prune -o -name cscope.out -prune -o -name .repo -prune -o -name .svn -prune -o -name .git -prune -o  -type f -name "*" -print0 | xargs -0 grep "$*"
 }
 
 function xgrepi()

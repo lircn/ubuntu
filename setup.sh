@@ -15,16 +15,6 @@ ln -f -s $PWD/scripts $HOME/
 # powerline
 bash $PWD/powerline/setup.sh
 
-# vim
-bash $PWD/vim/setup.sh
-
-# bundle
-echo -n "Download Vundle? (y/n)"
-read IN
-if [ "$IN" = "y" ] || [ "$IN" = "Y" ]; then
-    git clone https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-fi
-
 # tmux
 bash $PWD/tmux/setup.sh
 
